@@ -2,13 +2,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListaUsuarioTest {
+class PruebasGenerales {
     ListaUsuario lu = new ListaUsuario();
     Inventario i = new Inventario();
 
     @Test
     void añadir_Producto() {
         lu.Añadir_Producto("bebidas", "Té frios");
+        lu.Añadir_Producto("bebidas", "coca cola");
         lu.Añadir_Producto("mueble de terraza", "Mesas de jardín");
         lu.Añadir_Producto("sillones de masaje", "Sofás camas");
         lu.Añadir_Producto("condimentos", "Sirope de regaliz");
@@ -18,7 +19,7 @@ class ListaUsuarioTest {
     }
 
     @Test
-    void ProductCategory(){
+    void ProductCategory() {
         assertEquals(i.ProductCategory("té frios"), "bebidas");
         assertEquals(i.ProductCategory("mesas de jardín"), "mueble de terraza");
         assertEquals(i.ProductCategory("sofás camas"), "sillones de masaje");

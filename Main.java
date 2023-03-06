@@ -1,9 +1,15 @@
 import java.util.Scanner;
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
+    static Scanner sc;
+    static Inventario inventario;
+    static ListaUsuario lu;
 
     public static void main(String[] args) {
+        sc = new Scanner(System.in);
+        inventario = new Inventario();
+        lu = new ListaUsuario();
+
         System.out.println("Bienvenid@");
         Boolean continuar = true;
         do {
@@ -18,9 +24,6 @@ public class Main {
     }
 
     public static void menúPrincipal() {
-        Inventario inventario = new Inventario();
-        ListaUsuario lu = new ListaUsuario();
-
         System.out.println("\n¿Qué desea realizar?");
         System.out.println(
                 "1.Añadir producto a listado\n2.Mostrar la categoría de un producto\n3.Mostrar colección\n4.Mostrar colección ordenada por tipo\n5.Mostrar inventario\n6.Mostrar inventario ordenada por tipo\n");
@@ -29,9 +32,9 @@ public class Main {
         switch (accion) {
             case 1: // Añadir producto a listado
                 System.out.println("¿Qué producto desea añadir?");
-                String categoria = sc.nextLine().toLowerCase();
-                System.out.println("¿Cuál es la categoría de este?");
                 String producto = sc.nextLine().toLowerCase();
+                System.out.println("¿Cuál es la categoría de este?");
+                String categoria = sc.nextLine().toLowerCase();
                 lu.Añadir_Producto(categoria, producto);
                 break;
             case 2: // Mostrar la categoría de un producto

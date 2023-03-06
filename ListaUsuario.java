@@ -5,9 +5,11 @@ public class ListaUsuario {
     public Map<String, ArrayList<String>> carrito;
 
     @SuppressWarnings("unchecked")
+    ListaUsuario() {
+        carrito = MapFactory.getInstance(1);// Este elemento está sujeto a cambios para realizar diversas pruebas
+    }
+
     public void Añadir_Producto(String Categoria, String Producto) {
-        carrito = MapFactory.getInstance(2);// Este elemento está sujeto a cambios para realizar
-                                            // diversas pruebas
         if (Inventario.inventory.containsKey(Categoria)) {
             if (carrito.containsKey(Categoria)) {
                 carrito.get(Categoria).add(Producto);
