@@ -29,14 +29,14 @@ public class Main {
         switch (accion) {
             case 1: // Añadir producto a listado
                 System.out.println("¿Qué producto desea añadir?");
-                String categoria = sc.nextLine();
+                String categoria = sc.nextLine().toLowerCase();
                 System.out.println("¿Cuál es la categoría de este?");
-                String producto = sc.nextLine();
-                lu.Añadir_Producto(categoria.toLowerCase(), producto.toLowerCase());
+                String producto = sc.nextLine().toLowerCase();
+                lu.Añadir_Producto(categoria, producto);
                 break;
             case 2: // Mostrar la categoría de un producto
                 System.out.println("¿Qué producto deseas buscar?");
-                String prod = sc.nextLine();
+                String prod = sc.nextLine().toLowerCase();
                 inventario.ProductCategory(prod);
                 break;
             case 3: // Mostrar colección
