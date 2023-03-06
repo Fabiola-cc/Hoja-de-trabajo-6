@@ -36,7 +36,7 @@ public class Read_File {
             while (myReader.hasNextLine()) {
 
                 data = myReader.nextLine();
-                total.add(data);
+                total.add(data.toLowerCase());
 
             }
             myReader.close();

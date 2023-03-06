@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Inventario {
-    public Map<String, ArrayList<String>> inventory;
+    public static Map<String, ArrayList<String>> inventory;
     private ArrayList<String> lista;
 
     Inventario() {
@@ -11,7 +11,7 @@ public class Inventario {
 
     @SuppressWarnings("unchecked")
     private void guardarInventario() {
-        inventory = MapFactory.getInstance(1);// Este elemento está sujeto a cambios para realizar
+        inventory = MapFactory.getInstance(2);// Este elemento está sujeto a cambios para realizar
                                               // diversas pruebas
         lista = Read_File._readfile("ListadoProducto (2).txt//");
         lista.add("fin | fin");
@@ -52,8 +52,26 @@ public class Inventario {
     }
 
     public void MostrarInventario_Ordenado() {
-        for (Map.Entry<String, ArrayList<String>> e : inventory.entrySet())
-            // Printing key-value pairs
-            System.out.println(e.getKey() + " " + e.getValue());
+        for (Map.Entry<String, ArrayList<String>> e : inventory.entrySet()) {
+            System.out.println(e.getKey());
+            for (String producto : e.getValue()) {
+                System.out.println("\t" + producto);
+            }
+        }
+    }
+
+    public String ProductCategory(String Producto) {
+        String categoria = "";
+        for (Map.Entry<String, ArrayList<String>> e : inventory.entrySet()) {
+            for (String prod : e.getValue()) {
+                if (Producto.equalsIgnoreCase(prod)) {
+                    categoria = e.getKey();
+                }
+            }
+        }
+        if (categoria.equals("")) {
+            categoria = "Este producto no fue encontrado como parte de alguna categoría.";
+        }
+        return categoria;
     }
 }
