@@ -11,7 +11,7 @@ public class Inventario {
 
     @SuppressWarnings("unchecked")
     private void guardarInventario() {
-        inventory = MapFactory.getInstance(1);// Este elemento está sujeto a cambios para realizar
+        inventory = MapFactory.getInstance(3);// Este elemento está sujeto a cambios para realizar
                                               // diversas pruebas
         lista = Read_File._readfile("ListadoProducto (2).txt//");
         lista.add("fin | fin");

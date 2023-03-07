@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -14,9 +15,7 @@ public class Main {
         Boolean continuar = true;
         do {
             menúPrincipal();
-            System.out.println("\n\n¿Deseas realizar algo más?\n1. Sí\t2. No");
-            int resp = sc.nextInt();
-            sc.nextLine();
+            int resp = solicitarI("\n\n¿Deseas realizar algo más?\n1. Sí\t2. No");
             if (resp == 2) {
                 continuar = false;
             }
@@ -27,8 +26,7 @@ public class Main {
         System.out.println("\n¿Qué desea realizar?");
         System.out.println(
                 "1.Añadir producto a listado\n2.Mostrar la categoría de un producto\n3.Mostrar colección\n4.Mostrar colección ordenada por tipo\n5.Mostrar inventario\n6.Mostrar inventario ordenada por tipo\n");
-        int accion = sc.nextInt();
-        sc.nextLine();
+        int accion = solicitarI("");
         switch (accion) {
             case 1: // Añadir producto a listado
                 System.out.println("¿Qué producto desea añadir?");
@@ -55,5 +53,31 @@ public class Main {
                 inventario.MostrarInventario_Ordenado();
                 break;
         }
+    }
+
+    /**
+     * Imprime una solicitud y recibe un dato tipo int
+     * Evita una excepción -InputMismatchException- volviendo a solicitar el dato en
+     * caso de que ocurra. (Utilizada continuamente en distintos programas)
+     *
+     * @Author Fabiola Contreras
+     * @param solicitud texto que describe lo solicitado
+     * @return entero ingresado por el usuario
+     */
+    public static int solicitarI(String solicitud) {
+        System.out.println(solicitud);
+        int solicitar = 0;
+        Boolean correcto = false;
+        do {
+            try {
+                solicitar = sc.nextInt();
+                correcto = true;
+            } catch (InputMismatchException e) {
+                sc.next();
+                System.out.println("¡Cuidado! Ingresa un número entero.");
+            }
+        } while (correcto == false);
+        sc.nextLine(); // Elimina la posibilidad de saltarse una linea de solicitud después
+        return solicitar;
     }
 }

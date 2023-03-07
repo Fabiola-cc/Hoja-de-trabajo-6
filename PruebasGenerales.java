@@ -1,13 +1,17 @@
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class PruebasGenerales {
+    ListaUsuario lu;
+    Inventario i;
 
-class PruebasGenerales {
-    ListaUsuario lu = new ListaUsuario();
-    Inventario i = new Inventario();
+    public PruebasGenerales() {
+        lu = new ListaUsuario();
+        i = new Inventario();
+    }
 
     @Test
-    void añadir_Producto() {
+    public void añadir_Producto() {
         lu.Añadir_Producto("bebidas", "Té frios");
         lu.Añadir_Producto("bebidas", "coca cola");
         lu.Añadir_Producto("mueble de terraza", "Mesas de jardín");
@@ -19,14 +23,24 @@ class PruebasGenerales {
     }
 
     @Test
-    void ProductCategory() {
-        assertEquals(i.ProductCategory("té frios"), "bebidas");
-        assertEquals(i.ProductCategory("mesas de jardín"), "mueble de terraza");
-        assertEquals(i.ProductCategory("sofás camas"), "sillones de masaje");
-        assertEquals(i.ProductCategory("sirope de regaliz"), "condimentos");
-        assertEquals(i.ProductCategory("pasas"), "frutas");
-        assertEquals(i.ProductCategory("res"), "carnes");
-        assertEquals(i.ProductCategory("leche entera"), "lácteos");
+    public void ProductCategory() {
+        assertEquals("bebidas", i.ProductCategory("té frios"));
+        assertEquals("mueble de terraza", i.ProductCategory("mesas de jardín"));
+        assertEquals("sillones de masaje", i.ProductCategory("sofás camas"));
+        assertEquals("condimentos", i.ProductCategory("sirope de regaliz"));
+        assertEquals("frutas", i.ProductCategory("pasas"));
+        assertEquals("carnes", i.ProductCategory("res"));
+        assertEquals("lácteos", i.ProductCategory("leche entera"));
+    }
+
+    @Test
+    public void MostrarI() {
+        i.MostrarInventario();
+    }
+
+    @Test
+    public void MostrarC() {
+        lu.MostrarListado();
     }
 
 }

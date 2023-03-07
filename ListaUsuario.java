@@ -6,7 +6,7 @@ public class ListaUsuario {
 
     @SuppressWarnings("unchecked")
     ListaUsuario() {
-        carrito = MapFactory.getInstance(1);// Este elemento está sujeto a cambios para realizar diversas pruebas
+        carrito = MapFactory.getInstance(3);// Este elemento está sujeto a cambios para realizar diversas pruebas
     }
 
     public void Añadir_Producto(String Categoria, String Producto) {
